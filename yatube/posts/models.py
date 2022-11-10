@@ -6,7 +6,9 @@ User = get_user_model()
 
 class Group(models.Model):
     title = models.CharField("Title of the group", max_length=200)
-    slug = models.SlugField("Slug-name of the group", max_length=200, unique=True)
+    slug = models.SlugField(
+        "Slug-name of the group", max_length=200, unique=True
+    )
     description = models.TextField("Description", blank=True, null=True)
 
     def __str__(self):
@@ -17,10 +19,12 @@ class Post(models.Model):
     text = models.TextField("The main text", null=True)
     pub_date = models.DateTimeField("Publication date", auto_now_add=True)
     author = models.ForeignKey("Author's name",
-        User, on_delete=models.CASCADE, related_name='posts')
+                               User, on_delete=models.CASCADE,
+                               related_name='posts')
     group = models.ForeignKey("Name of the group",
-        Group, on_delete=models.SET_NULL,
-        blank=True, null=True,
-        related_name='posts')
+                              Group, on_delete=models.SET_NULL,
+                              blank=True, null=True,
+                              related_name='posts')
+
     class Meta:
         ordering = ['-pub_date']

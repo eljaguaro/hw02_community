@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 last_ten = 10
+
+
 # Главная страница
 def index(request):
     posts = Post.objects.all()[:last_ten]
