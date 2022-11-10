@@ -22,7 +22,7 @@ class Post(models.Model):
                                verbose_name="Author's name",
                                related_name='posts')
     group = models.ForeignKey(Group, on_delete=models.SET_NULL,
-                              verbose_name="Name of the group",   
+                              verbose_name="Name of the group",
                               related_name='posts',
                               blank=True, null=True)
 
